@@ -3,6 +3,8 @@
 // HTML Variable for Output
 let outputEl = document.getElementById("output");
 
+let output = [];
+
 // Load Color Data
 let colorData;
 
@@ -35,7 +37,14 @@ function goBtnClicked() {
 // MENU FUNCTIONS
 function allColors() {
   // Display Name and Family of All Colors
-  outputEl.innerHTML = "<h3>Display All Colors</h3>";
+  for (let i = 0; i < colorData.length; i++) {
+    // create a new div El & set the inner HTML of div to ____
+    let divEl = document.createElement("div");
+    divEl.innerHTML = `${i}. Colour name: ${colorData[i].name} | Colour Family: ${colorData[i].family}`;
+    outputEl.appendChild(divEl);
+  }
+
+  // outputEl.innerHTML = "<h3>Display All Colors</h3>";
 }
 
 function brightColors() {
