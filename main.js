@@ -36,6 +36,8 @@ function goBtnClicked() {
 
 // MENU FUNCTIONS
 function allColors() {
+  outputEl.innerHTML = "";
+
   // Display Name and Family of All Colors
   for (let i = 0; i < colorData.length; i++) {
     // create a new div El & set the inner HTML of div to ____
@@ -49,20 +51,58 @@ function allColors() {
 
 function brightColors() {
   // Display Name and Brightness of All Colors with a Brightness of 200 and Higher
-  outputEl.innerHTML = "<h3>Display Bright Colors</h3>";
+  outputEl.innerHTML = "";
+
+  for (let i = 0; i < colorData.length; i++) {
+    if (colorData[i].brightness >= 200) {
+      let divEl = document.createElement("div");
+      divEl.innerHTML = `Colour name: ${colorData[i].name} | Colour Family: ${colorData[i].family}`;
+      outputEl.appendChild(divEl);
+    }
+  }
 }
 
 function redPinkFamilies() {
   // Count Colors in Red/Pink Families
-  outputEl.innerHTML = "<h3>Count Red/Pink Family Colors</h3>";
+  outputEl.innerHTML = ""; // clear output
+
+  let count = 0;
+
+  for (let i = 0; i < colorData.length; i++) {
+    if (colorData[i].family === "Red" || colorData[i].family === "Pink") {
+      count++;
+    }
+  }
+  let divEl = document.createElement("div");
+  divEl.innerHTML = `Colours in Red or Pink Families: ${count}`;
+  outputEl.appendChild(divEl);
 }
 
 function familySearch() {
+  outputEl.innerHTML = "";
+  let colourFamily = prompt("Colour family you want to display:");
+  let familyCount = 0;
+
+  for (let i = 0; i < colorData.length; i++) {
+    if (colorData[i].family === colourFamily) {
+      let divEl = document.createElement("div");
+      divEl.innerHTML = `Colour name: ${colorData[i].name} | Colour Family: ${colorData[i].family}`;
+      outputEl.appendChild(divEl);
+    }
+
+    // display count here [[[[[WHERE U LEFT OFF <3 ]]]]]
+    for (let i = 0; i < colorData.length; i++) {
+      if (colorData[i].family === "colourFamily") {
+        familyCount++;
+      }
+    }
+  }
   // Display Name and Family of all Colors that Match a User Provided Family Name. Also Output a Count of Colors Found.
-  outputEl.innerHTML = "<h3>Family Search</h3>";
 }
 
 function startLetterSearch() {
+  outputEl.innerHTML = "";
+
   // Display Name of all Colors that Match a User Provided Starting Letter. Also Output a Count of Colors Found.
   outputEl.innerHTML = "<h3>Start Letter Search</h3>";
 }
